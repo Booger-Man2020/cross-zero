@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 public class crossZerro {
     public static char[][] MAP;
-    public static final int SIZE = 3;
-    public static final int DOTS_TO_WIN = 3;
-    public static final char DOT_EMPTY = '•';
+    public static final int SIZE = 5;
+    public static final int DOTS_TO_WIN = 4;
+    public static final char DOT_EMPTY = '.';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
 
@@ -100,17 +100,68 @@ public class crossZerro {
         MAP[y][x] = DOT_O;
     }
     public static boolean checkWin(char symb) {
-        if(MAP[0][0] == symb && MAP[0][1] == symb && MAP[0][2] == symb) return true;
-        if(MAP[1][0] == symb && MAP[1][1] == symb && MAP[1][2] == symb) return true;
-        if(MAP[2][0] == symb && MAP[2][1] == symb && MAP[2][2] == symb) return true;
-        if(MAP[0][0] == symb && MAP[1][0] == symb && MAP[2][0] == symb) return true;
-        if(MAP[0][1] == symb && MAP[1][1] == symb && MAP[2][1] == symb) return true;
-        if(MAP[0][2] == symb && MAP[1][2] == symb && MAP[2][2] == symb) return true;
-        if(MAP[0][0] == symb && MAP[1][1] == symb && MAP[2][2] == symb) return true;
-        if(MAP[2][0] == symb && MAP[1][1] == symb && MAP[0][2] == symb) return true;
-        return false;
+        int a = 0, b = 0, c = 0, d = 0, e = 0;
+        for (int i = 0; i < SIZE; i++) {
+            if (symb == MAP[i][c]) {
+                a = a + 1;
+                c = c + 1;
+            } else {
+                c = c + 1;
+            }
+            for (int j = 0; j < SIZE; j++) {
+                if (MAP[i][j] == symb) {
+
+                    b = b + 1;
+
+                }
+                if ((a == DOTS_TO_WIN) || (b == DOTS_TO_WIN)) return true;
+            }
+            for (i = 0; i < MAP.length; i++) {
+                if (symb == MAP[i][i]) {
+                    d = d + 1;
+                }
+            }
+            for (i = 0; i < MAP.length; i++) {
+                for (int j = 0; j < MAP.length - i; j++) {
+                    if (symb == MAP[i][j]) {
+                        e = e + 1;
+                    }
+
+                }if ((e == DOTS_TO_WIN) || (d == DOTS_TO_WIN)) return true;
+
+
+
+            }
+
+        }return false;
     }
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        if(MAP[0][0] == symb && MAP[0][1] == symb && MAP[0][2] == symb) return true;
+//        if(MAP[1][0] == symb && MAP[1][1] == symb && MAP[1][2] == symb) return true;
+//        if(MAP[2][0] == symb && MAP[2][1] == symb && MAP[2][2] == symb) return true;
+//        if(MAP[0][0] == symb && MAP[1][0] == symb && MAP[2][0] == symb) return true;
+//        if(MAP[0][1] == symb && MAP[1][1] == symb && MAP[2][1] == symb) return true;
+//        if(MAP[0][2] == symb && MAP[1][2] == symb && MAP[2][2] == symb) return true;
+//        if(MAP[0][0] == symb && MAP[1][1] == symb && MAP[2][2] == symb) return true;
+//        if(MAP[2][0] == symb && MAP[1][1] == symb && MAP[0][2] == symb) return true;
+//        return false;
+//    }
+
+
+
+
